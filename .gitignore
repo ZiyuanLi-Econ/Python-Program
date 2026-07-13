@@ -1,0 +1,39 @@
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Packaging and coverage output
+build/
+dist/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Environment files and local secrets
+.env
+.env.*
+!.env.example
+
+# Notebook, editor, and IDE state
+.ipynb_checkpoints/
+.vscode/
+.idea/
+*.code-workspace
+
+# Operating-system metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Third-party source data must be downloaded locally.
+data_raw/*
+!data_raw/README.md
