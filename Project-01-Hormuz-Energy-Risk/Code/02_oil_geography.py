@@ -15,6 +15,16 @@ PRODUCTION_COLOR = "#2962A3"
 CONSUMPTION_COLOR = "#D9852B"
 SOURCE_NOTE = "Source: Energy Institute, Statistical Review of World Energy 2025."
 
+REGIONAL_TOTALS = {
+    "North America": "Total North America",
+    "S. & Cent. America": "Total S. & Cent. America",
+    "Europe": "Total Europe",
+    "CIS": "Total CIS",
+    "Middle East": "Total Middle East",
+    "Africa": "Total Africa",
+    "Asia Pacific": "Total Asia Pacific",
+}
+
 
 def country_series(data, variable, value_name):
     """Select one country series and remove regional and world totals."""
@@ -28,6 +38,19 @@ def country_series(data, variable, value_name):
     return selected.rename(columns={"Value": value_name}).sort_values(
         value_name, ascending=False
     )
+
+
+def one_value(data, country, variable):
+    """Return one Energy Institute value for the selected year."""
+
+    values = data[
+        (data["Country"] == country)
+        & (data["Year"] == YEAR)
+        & (data["Var"] == variable)
+    ]["Value"]
+    if len(values) != 1:
+        raise ValueError(f"Expected one {variable} value for {country}, found {len(values)}")
+    return float(values.iloc[0])
 
 
 def save_figure(fig, path):
@@ -45,6 +68,8 @@ def main():
 
     production = country_series(data, "oilprod_kbd", "Production (kbd)")
     consumption = country_series(data, "oilcons_kbd", "Consumption (kbd)")
+    world_production = one_value(data, "Total World", "oilprod_kbd")
+    world_consumption = one_value(data, "Total World", "oilcons_kbd")
 
     # Top-country rankings.
     top_producers = production.head(10).reset_index(drop=True)
@@ -59,19 +84,23 @@ def main():
         }
     )
 
-    # Regional shares reveal where supply and demand are separated.
-    regional = pd.concat(
-        [
-            production.groupby("Region")["Production (kbd)"].sum(),
-            consumption.groupby("Region")["Consumption (kbd)"].sum(),
-        ],
-        axis=1,
-    ).fillna(0)
+    # Use the published regional totals and Total World denominators. Summing
+    # only individually named countries would omit the dataset's "Other" rows.
+    regional_rows = []
+    for region, total_country in REGIONAL_TOTALS.items():
+        regional_rows.append(
+            {
+                "Region": region,
+                "Production (kbd)": one_value(data, total_country, "oilprod_kbd"),
+                "Consumption (kbd)": one_value(data, total_country, "oilcons_kbd"),
+            }
+        )
+    regional = pd.DataFrame(regional_rows).set_index("Region")
     regional["Production share (%)"] = (
-        regional["Production (kbd)"] / regional["Production (kbd)"].sum() * 100
+        regional["Production (kbd)"] / world_production * 100
     )
     regional["Consumption share (%)"] = (
-        regional["Consumption (kbd)"] / regional["Consumption (kbd)"].sum() * 100
+        regional["Consumption (kbd)"] / world_consumption * 100
     )
     regional["Gap (percentage points)"] = (
         regional["Production share (%)"] - regional["Consumption share (%)"]
@@ -85,10 +114,10 @@ def main():
             {
                 "Country group": f"Top {top_n}",
                 "Production share (%)": production.head(top_n)["Production (kbd)"].sum()
-                / production["Production (kbd)"].sum()
+                / world_production
                 * 100,
                 "Consumption share (%)": consumption.head(top_n)["Consumption (kbd)"].sum()
-                / consumption["Consumption (kbd)"].sum()
+                / world_consumption
                 * 100,
             }
         )
