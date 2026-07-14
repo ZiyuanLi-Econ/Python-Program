@@ -6,7 +6,7 @@
 
 **Project question.** How important is the Strait of Hormuz to the global oil system, and which of seven sampled importing markets show the highest structural-exposure indicators?
 
-> **Headline finding:** Hormuz is a large and persistent oil chokepoint. It carried 20.7 million barrels per day (mb/d) in 2024, equal to 26.0% of global maritime oil trade and 20.0% of total oil supply. Japan and South Korea also show the highest selected-exporter origin shares among the sampled importers. These results establish structural exposure, not the probability or price impact of a disruption.
+> **Headline finding:** Oil still supplied 33.6% of global energy in 2024, while the main production and consumption centres were geographically separated. That separation helps explain why maritime routes are structurally important: Hormuz carried 20.7 million barrels per day (mb/d), equal to 26.0% of global maritime oil trade and 20.0% of total oil supply. Exposure is uneven across the seven sampled importers; Japan and South Korea had the highest selected Hormuz-region exporter-origin shares at 94.5% and 71.9%. The project establishes this chain of structural exposure; it does not estimate disruption probability or price impact.
 
 The code produces 15 figures. Six key outputs are shown below; the complete set is available in the [figure gallery](Figures/README.md).
 
@@ -20,53 +20,84 @@ The code produces 15 figures. Six key outputs are shown below; the complete set 
 
 ```mermaid
 flowchart LR
-    A["Three public datasets"] --> B["pandas cleaning and aggregation"]
-    B --> C["Validation checks"]
-    C --> D["matplotlib charts"]
-    D --> E["15 outputs"]
-    E --> F["6 key figures in README"]
-    E --> G["Full figure gallery"]
+    A["Oil's role in global energy"] --> B["Producer-consumer mismatch"]
+    B --> C["Regional need for trade"]
+    C --> D["Major maritime routes"]
+    D --> E["Hormuz scale and persistence"]
+    E --> F["Uneven importer exposure"]
 ```
 
-The analysis moves from global oil relevance to geographic imbalance, importer concentration and direct chokepoint evidence. The data workflow keeps trade-origin proxies separate from measured physical flows.
+The evidence is read sequentially. Oil must first be large enough to matter; production and consumption must then be sufficiently separated to require trade; major routes must carry sufficiently large flows to matter; and only after the scale of Hormuz is established does the analysis compare market-level exposure indicators. In the code, three public datasets are cleaned and aggregated with pandas, checked, and converted into 15 matplotlib outputs. Domestic supply gaps, exporter-origin concentration and measured physical flows remain separate concepts.
 
 ## 3. Evidence
 
-### 3.1 Oil remains macro-relevant
+Each step below answers the question left open by the previous one. The purpose is not to collect six unrelated charts, but to move from the global energy system to the specific countries for which Hormuz-related exposure may matter most.
+
+### 3.1 Start with oil's role in the global energy system
 
 ![Global energy mix in 2024](Figures/01_global_energy_mix_2024.png)
 
-**Finding.** Oil was the largest source of global energy supply in 2024 at 33.6%. This scale makes oil-flow disruptions potentially macro-relevant, although the project does not estimate their inflation or price effects.
+Global energy supply totalled 592.2 exajoules in 2024. Oil was the largest source at 33.6%, ahead of coal at 27.9% and natural gas at 25.1%; the three fossil sources together accounted for 86.6%. The point is not that every oil disruption must create a large economic shock. It is that oil remains large enough for a material transport constraint to potentially affect delivered energy costs, trade balances and inflation-sensitive sectors.
 
-### 3.2 Supply and demand are geographically separated
+This establishes why oil matters, but not where the system is vulnerable. The next question is whether the barrels are produced in the same places where they are consumed.
+
+### 3.2 The major producers and consumers are not fully aligned
+
+![Largest oil producers and consumers in 2024](Figures/02_top_oil_markets_2024.png)
+
+The United States was unusual in appearing at the top of both lists, producing about 20.1 mb/d and consuming 19.0 mb/d. Beyond the United States, the rankings diverged. Saudi Arabia and Russia each produced about 10.8 mb/d, while China consumed 16.4 mb/d but produced only 4.3 mb/d. Five of the ten largest producers were Middle Eastern economies: Saudi Arabia, Iran, Iraq, the United Arab Emirates and Kuwait. On the demand side, India consumed 5.6 mb/d, and Japan and South Korea consumed 3.2 and 2.9 mb/d respectively, without appearing among the ten largest producers.
+
+Country rankings therefore reveal a first mismatch between supply centres and demand centres. They do not by themselves show the direction or scale of interregional trade, so the analysis next aggregates production and consumption by region.
+
+### 3.3 Regional share gaps point to a structural need for trade
 
 ![Regional oil production and consumption shares in 2024](Figures/03_regional_oil_balance_2024.png)
 
-**Finding.** The Middle East's production share exceeded its consumption share by 21.3 percentage points, while Asia Pacific's production share lagged its consumption share by 30.4 points. These opposite share gaps are consistent with a structural need for interregional oil trade.
+The Middle East produced 31.1% of world oil but consumed 9.8%, a positive production-consumption share gap of 21.3 percentage points. Asia Pacific showed the reverse pattern: 7.5% of production and 37.9% of consumption, a negative gap of 30.4 points. Europe also consumed a much larger share than it produced, at 13.9% versus 3.1%.
 
-### 3.3 Importer sensitivity differs across markets
+These share gaps are not observed bilateral trade flows, but their opposing direction is consistent with a structural need to move oil from producing regions toward Asian and European demand centres. Once large volumes must cross regions, the location and throughput of maritime routes become part of the supply system rather than a secondary logistics detail.
 
-![Energy mix of selected markets in 2024](Figures/07_selected_market_energy_mix_2024.png)
-
-**Finding.** Oil represented 39.0%-42.2% of energy supply in Japan, South Korea, Germany, the European Union aggregate and the United States. China and India had lower oil shares; because this chart presents percentages, it should not be read as a ranking of absolute oil demand.
-
-### 3.4 Exporter-origin concentration is highest in selected Asian markets
-
-![Selected Middle East and Hormuz-region exporter-origin shares in 2024](Figures/10_middle_east_vs_hormuz_origin_share_2024.png)
-
-**Finding.** Among the seven sampled reporters, Japan and South Korea had the highest selected-exporter origin shares under both definitions. China was more sensitive to the definition: 44.3% for the selected Middle East group versus 36.9% for the narrower Hormuz-region group, which excludes Oman.
-
-### 3.5 Hormuz is one of the world's largest oil routes
+### 3.4 Large oil volumes pass through a small number of major routes
 
 ![Oil flows through major global maritime routes in 2024](Figures/13_global_oil_chokepoints_2024.png)
 
-**Finding.** Hormuz carried 20.7 mb/d in 2024, close to Malacca at 22.5 mb/d and well above the other individual routes in the EIA comparison.
+The EIA route comparison places the Strait of Malacca first at 22.5 mb/d in 2024 and Hormuz second at 20.7 mb/d. The next route in the comparison, the Cape of Good Hope, carried 9.3 mb/d. This makes Hormuz a systemically large transport corridor: disruption risk is relevant not simply because the strait is narrow, but because a large absolute volume is concentrated there.
 
-### 3.6 The exposure is persistent
+The 2024 comparison establishes scale, but a single year could still be exceptional. A historical share calculation is therefore needed to determine whether the importance of Hormuz is persistent.
+
+### 3.5 Hormuz is a persistent part of the global oil system
 
 ![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](Figures/15_hormuz_global_share_2020_1H25.png)
 
-**Finding.** Hormuz consistently handled roughly one quarter of maritime oil trade and about one fifth of total oil supply from 2020 through 1H25. Its importance is not the result of a single exceptional year.
+Hormuz flow remained between 19.2 and 21.9 mb/d from 2020 through 1H25. Across the same period, its share stayed within 25.9%-27.9% of world maritime oil trade and 20.0%-21.8% of total oil supply. The 2024 readings of 20.7 mb/d, 26.0% and 20.0% were therefore close to the middle of the displayed ranges rather than an exceptional peak.
+
+The consistently high range shows that Hormuz was not important only in one unusual year. Yet a route can be globally important without every importing market being equally exposed. The final step therefore turns from system-wide physical flow to market-level domestic supply and crude-import origin indicators.
+
+### 3.6 Market exposure is uneven and must be measured in separate dimensions
+
+UN Comtrade provides the reported origin of crude imports for seven sampled reporters. The chart compares two nested definitions: a selected Middle East group of eight exporters and a narrower selected Hormuz-region group that excludes Oman. These shares describe exporter origin, not the vessel's physical route.
+
+![Selected Middle East and Hormuz-region exporter-origin shares in 2024](Figures/10_middle_east_vs_hormuz_origin_share_2024.png)
+
+| Reporter | Selected Middle East origin share | Selected Hormuz-region origin share | Domestic supply-gap proxy |
+|---|---:|---:|---:|
+| Japan | 95.1% | 94.5% | N/A |
+| South Korea | 72.5% | 71.9% | N/A |
+| India | 45.8% | 45.4% | 86.9% |
+| China | 44.3% | 36.9% | 74.0% |
+| European Union | 13.7% | 13.7% | 96.9% |
+| United States | 8.1% | 8.1% | 0.0% |
+| Germany | 7.7% | 7.7% | N/A |
+
+Japan and South Korea had the highest selected-exporter origin concentration in the sample. India and China combined material Hormuz-region origin shares with domestic supply-gap proxies of 86.9% and 74.0%. The European Union illustrates why the measures must remain separate: its domestic supply-gap proxy was high at 96.9%, but only 13.7% of reported crude-import origins came from the selected Hormuz-region group. The United States had both a zero domestic supply-gap proxy and a relatively low origin share of 8.1%.
+
+China also shows why the exporter definition matters. Its share falls from 44.3% under the broader Middle East group to 36.9% under the narrower group because Oman is excluded. For Japan, South Korea and India, the difference is less than one percentage point.
+
+The conclusion is therefore conditional but clear. Hormuz is structurally important to the global oil system; Japan and South Korea show the greatest selected-exporter origin concentration; India and China combine domestic production shortfalls with material regional origin shares; and the European Union, United States and Germany show lower concentration in this particular origin screen. None of these statistics alone proves physical transit through Hormuz, and the project deliberately does not combine them into a single dependency score.
+
+The domestic supply-gap proxy is calculated as the positive difference between reported oil consumption and production, divided by consumption. `N/A` means the required production observation was unavailable; it is not treated as zero and is not a claim of self-sufficiency or gross import dependence.
+
+Taken together, the evidence moves from global scale to geographic imbalance, from imbalance to route concentration, and from route concentration to unequal importer exposure. The financial question is therefore how a disruption could transmit, not whether every market would be affected in the same way.
 
 ## 4. Financial relevance
 
@@ -83,6 +114,7 @@ This is a transmission map, not an oil-price target or a security recommendation
 ### Limitations
 
 - The cross-market analysis is a 2024 snapshot, not a live risk monitor.
+- Regional production and consumption shares use different world totals; their percentage-point gap is a structural indicator, not observed net exports.
 - UN Comtrade reports exporter origin, not the vessel's physical route through Hormuz.
 - HS 2709 covers crude oil, while the EIA chokepoint series uses a broader oil-flow definition.
 - The selected Hormuz-region group is a seven-exporter screening definition; the broader Middle East group also includes Oman.
