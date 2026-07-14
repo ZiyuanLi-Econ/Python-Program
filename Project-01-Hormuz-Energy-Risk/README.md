@@ -13,10 +13,10 @@ The project answers five questions with five Python scripts:
 | Question | Analysis | Main output |
 |---|---|---|
 | Q1. How important is oil in the global energy system? | Global energy mix | Figure 01 |
-| Q2. Where are oil production and consumption separated? | Country rankings, regional balance and concentration | Figures 02鈥?4 |
-| Q3. Which large markets are most oil-sensitive? | Total energy supply and energy mix | Figures 05鈥?7 |
-| Q4. Which selected importers have concentrated exporter origins? | Crude-import origin and domestic supply-gap screens | Figures 08鈥?0 |
-| Q5. How large and persistent are Hormuz flows? | Direct EIA chokepoint data | Figures 11鈥?3 |
+| Q2. Where are oil production and consumption separated? | Country rankings, regional balance and concentration | Figures 02-04 |
+| Q3. Which large markets are most oil-sensitive? | Total energy supply and energy mix | Figures 05-07 |
+| Q4. Which selected importers have concentrated exporter origins? | Crude-import origin and domestic supply-gap screens | Figures 08-10 |
+| Q5. How large and persistent are Hormuz flows? | Direct EIA chokepoint data | Figures 11-13 |
 
 All 13 code-generated charts can also be viewed in the [figure gallery](Figures/README.md).
 
@@ -24,10 +24,10 @@ All 13 code-generated charts can also be viewed in the [figure gallery](Figures/
 
 ```mermaid
 flowchart TD
-    A["Q1 路 Global energy mix"] --> B["Q2 路 Oil production and consumption geography"]
-    B --> C["Q3 路 Selected-market energy sensitivity"]
-    C --> D["Q4 路 Import-origin and supply-gap screens"]
-    D --> E["Q5 路 Direct Hormuz flow data"]
+    A["Q1 - Global energy mix"] --> B["Q2 - Oil production and consumption geography"]
+    B --> C["Q3 - Selected-market energy sensitivity"]
+    C --> D["Q4 - Import-origin and supply-gap screens"]
+    D --> E["Q5 - Direct Hormuz flow data"]
     E --> F["Financial transmission"]
     F --> G["Conditional scenarios and monitoring"]
 ```
@@ -36,7 +36,7 @@ The logic moves from the global energy system to physical oil flows and only the
 
 ## 3. Executive call
 
-> **Structural exposure is high; realised market impact is conditional.** The Strait of Hormuz carried 20.7 million barrels per day (mb/d) in 2024鈥?6.0% of world maritime oil trade and 20.0% of total oil supply. The project does not assume that a disruption will occur or that all of this volume would be lost. It shows that a persistent, concentrated transport dependency could create nonlinear repricing if transit risk rises and inventories, spare capacity or bypass routes cannot absorb the shock.
+> **Structural exposure is high; realised market impact is conditional.** The Strait of Hormuz carried 20.7 million barrels per day (mb/d) in 2024 - 26.0% of world maritime oil trade and 20.0% of total oil supply. The project does not assume that a disruption will occur or that all of this volume would be lost. It shows that a persistent, concentrated transport dependency could create nonlinear repricing if transit risk rises and inventories, spare capacity or bypass routes cannot absorb the shock.
 
 | Indicator | Code result | Financial interpretation |
 |---|---:|---|
@@ -90,7 +90,7 @@ The logic moves from the global energy system to physical oil flows and only the
 
 *Figure 07. Energy supply mix for selected economies and the European Union regional aggregate.*
 
-Oil supplied about 39%鈥?2% of energy in Japan, South Korea, Germany, the European Union aggregate and the United States. China and India were more coal-intensive, but their total energy systems were much larger. Exposure therefore depends on both oil share and absolute demand.
+Oil supplied about 39%-42% of energy in Japan, South Korea, Germany, the European Union aggregate and the United States. China and India were more coal-intensive, but their total energy systems were much larger. Exposure therefore depends on both oil share and absolute demand.
 
 ![Share of crude imports reported from selected Hormuz-region exporters in 2024](Figures/08_hormuz_exporter_origin_share_2024.png)
 
@@ -98,7 +98,7 @@ Oil supplied about 39%鈥?2% of energy in Japan, South Korea, Germany, the Europ
 
 Japan and South Korea had the highest selected-exporter origin shares at 94.5% and 71.9%. India and China followed at 45.4% and 36.9%. The European Union, United States and Germany were lower in this sample.
 
-**Critical distinction.** Exporter origin is a screening proxy. It does not prove that a cargo physically passed through Hormuz, and some exporters have alternative routes. The domestic supply-gap measure in Figure 10 is also a proxy鈥攏ot observed gross import dependence.
+**Critical distinction.** Exporter origin is a screening proxy. It does not prove that a cargo physically passed through Hormuz, and some exporters have alternative routes. The domestic supply-gap measure in Figure 10 is also a proxy - not observed gross import dependence.
 
 ### 4.4 Direct flow data confirm systemic importance
 
@@ -112,7 +112,7 @@ Hormuz was the second-largest route in the EIA comparison at 20.7 mb/d, close to
 
 *Figure 13. Hormuz share of maritime oil trade and total oil supply. `1H25` is a first-half average.*
 
-Hormuz flow stayed between 19.2 and 21.9 mb/d during 2020鈥?024 and averaged 20.9 mb/d in 1H25. Its share ranged from 25.9% to 27.9% of maritime oil trade and from 20.0% to 21.8% of total supply. The exposure is persistent, not a one-year anomaly.
+Hormuz flow stayed between 19.2 and 21.9 mb/d during 2020-2024 and averaged 20.9 mb/d in 1H25. Its share ranged from 25.9% to 27.9% of maritime oil trade and from 20.0% to 21.8% of total supply. The exposure is persistent, not a one-year anomaly.
 
 ## 5. Financial transmission
 
@@ -151,7 +151,7 @@ These pathways are illustrative. They have no assigned probability and no oil-pr
 
 | Scenario | Condition | Expected first signal | Likely financial transmission | Confirm / invalidate |
 |---|---|---|---|---|
-| Continued transit | Flow remains near the recent 20鈥?2 mb/d range | Risk premium fades or stays limited | Fundamentals dominate; little persistent earnings impact | Stable flow, freight, insurance and inventories |
+| Continued transit | Flow remains near the recent 20-22 mb/d range | Risk premium fades or stays limited | Fundamentals dominate; little persistent earnings impact | Stable flow, freight, insurance and inventories |
 | Logistics friction | Transit continues but delays, freight or insurance rise | Freight and prompt spreads react first | Delivered crude costs and working capital rise; importer margins face moderate pressure | Persistent freight/insurance move; invalidated by rapid normalisation |
 | Sustained physical constraint | Flow falls materially and buffers are insufficient | Crude backwardation, volatility and inventory draw | Upstream/downstream earnings dispersion; importer inflation and FX pressure | Lower measured flow plus inventory draw; invalidated by bypass, spare capacity or demand response |
 
@@ -179,10 +179,10 @@ The next research update should track:
 | Script | Purpose | Figures |
 |---|---|---|
 | [`01_global_energy.py`](Code/01_global_energy.py) | Calculate the 2024 global energy mix | 01 |
-| [`02_oil_geography.py`](Code/02_oil_geography.py) | Rank oil markets and calculate regional/world concentration | 02鈥?4 |
-| [`03_market_energy_mix.py`](Code/03_market_energy_mix.py) | Compare total energy supply and source mix | 05鈥?7 |
-| [`04_import_exposure.py`](Code/04_import_exposure.py) | Build exporter-origin and domestic supply-gap screens | 08鈥?0 |
-| [`05_hormuz_chokepoint.py`](Code/05_hormuz_chokepoint.py) | Analyse EIA chokepoint flows | 11鈥?3 |
+| [`02_oil_geography.py`](Code/02_oil_geography.py) | Rank oil markets and calculate regional/world concentration | 02-04 |
+| [`03_market_energy_mix.py`](Code/03_market_energy_mix.py) | Compare total energy supply and source mix | 05-07 |
+| [`04_import_exposure.py`](Code/04_import_exposure.py) | Build exporter-origin and domestic supply-gap screens | 08-10 |
+| [`05_hormuz_chokepoint.py`](Code/05_hormuz_chokepoint.py) | Analyse EIA chokepoint flows | 11-13 |
 
 ### Main limitations
 
@@ -209,10 +209,7 @@ The Energy Institute and UN Comtrade source files are not redistributed in this 
 
 ## 10. Additional analytical outputs
 
-The six figures above form the main evidence chain. The remaining seven code outputs are preserved below so the complete Q1鈥換5 analysis is visible rather than hidden or deleted.
-
-<details open>
-<summary><strong>Open / close the additional figures</strong></summary>
+The six figures above form the main evidence chain. The remaining seven code outputs are preserved below so the complete Q1-Q5 analysis is visible rather than hidden or deleted.
 
 ### Largest producing and consuming countries
 
@@ -242,13 +239,11 @@ The six figures above form the main evidence chain. The remaining seven code out
 
 ![Oil flow through the Strait of Hormuz from 2020 through first-half 2025](Figures/12_hormuz_flow_2020_1H25.png)
 
-</details>
-
 ## Sources
 
-- [Energy Institute 鈥?Statistical Review of World Energy](https://www.energyinst.org/statistical-review/resources-and-data-downloads)
-- [UN Comtrade 鈥?International Trade Data](https://comtradeplus.un.org/TradeFlow)
-- [U.S. EIA 鈥?World Oil Transit Chokepoints](https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/)
+- [Energy Institute - Statistical Review of World Energy](https://www.energyinst.org/statistical-review/resources-and-data-downloads)
+- [UN Comtrade - International Trade Data](https://comtradeplus.un.org/TradeFlow)
+- [U.S. EIA - World Oil Transit Chokepoints](https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/)
 
 ## Repository structure
 
