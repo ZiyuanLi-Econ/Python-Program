@@ -1,8 +1,7 @@
 # Python Programs
 
 Personal Python projects focused on economics, finance, and energy markets.
-Each project keeps its code, figures, data notes, and written analysis in one
-clearly named folder.
+
 
 | Project | Research topic | Main tools |
 |---|---|---|
