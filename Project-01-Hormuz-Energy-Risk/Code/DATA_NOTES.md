@@ -9,6 +9,7 @@ running the analysis.
 - File: `Statistical Review of World Energy Narrow format.csv`
 - Source: [Statistical Review data downloads](https://www.energyinst.org/statistical-review/resources-and-data-downloads)
 - Snapshot used: 2025 edition, containing data through 2024
+- Snapshot SHA-256: `1A4C40400712600FB25C1BDD7D57F0B410857FC4205A6D74DD6E6349EDD044E4`
 - Used by: scripts 01-04
 
 The analysis deliberately keeps the 2024 snapshot used for this project. Newer
@@ -21,6 +22,7 @@ editions may revise both the historical series and the total-energy methodology.
 - Query: 2024 annual imports, HS 2709 (crude petroleum)
 - Reporters: United States, China, Germany, European Union, Japan, India, and South Korea
 - Partners: World plus all available individual partner economies
+- Snapshot SHA-256: `1515520AD73AC2CE13456855348CED1964F2BC98A9F89BA608635E6C14643A4D`
 - Used by: script 04
 
 UN Comtrade can revise observations as reporters submit updates. The results in
@@ -38,3 +40,10 @@ No separate download is needed. Values are in million barrels per day.
 The Energy Institute and UN Comtrade CSV files remain subject to their
 publishers' terms. Download them from the official sources and do not commit the
 local `data_raw` folder.
+
+## Validation environment
+
+The complete workflow was last checked with Python 3.14.3, pandas 3.0.1 and
+matplotlib 3.10.8. The calculations should remain stable on compatible newer
+versions, although fonts and PNG file hashes can vary across operating systems
+and matplotlib releases.

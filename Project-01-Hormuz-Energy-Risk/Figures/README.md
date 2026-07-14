@@ -44,24 +44,32 @@ GitHub displays image folders as a file list rather than as Windows-style thumbn
 
 ![Share of crude imports from selected Hormuz-region exporters in 2024](08_hormuz_exporter_origin_share_2024.png)
 
-### Figure 09 - Exporter mix
+### Figure 09 - Selected Middle East exporter-origin share
 
-![Exporter mix of reported crude imports in 2024](09_hormuz_exporter_mix_2024.png)
+![Selected Middle East exporter-origin share in 2024](09_middle_east_exporter_origin_share_2024.png)
 
-### Figure 10 - Domestic supply-gap proxy
+### Figure 10 - Selected Middle East versus Hormuz-region origins
 
-![Domestic oil supply-gap proxy in 2024](10_domestic_supply_gap_proxy_2024.png)
+![Selected Middle East and Hormuz-region exporter-origin shares in 2024](10_middle_east_vs_hormuz_origin_share_2024.png)
+
+### Figure 11 - Crude-import exporter mix
+
+![Exporter mix of reported crude imports in 2024](11_crude_import_exporter_mix_2024.png)
+
+### Figure 12 - Domestic supply-gap proxy
+
+![Domestic oil supply-gap proxy in 2024](12_domestic_supply_gap_proxy_2024.png)
 
 ## Q5 - Direct chokepoint flows
 
-### Figure 11 - Major global oil routes
+### Figure 13 - Major global oil routes
 
-![Oil flows through major global maritime routes in 2024](11_global_oil_chokepoints_2024.png)
+![Oil flows through major global maritime routes in 2024](13_global_oil_chokepoints_2024.png)
 
-### Figure 12 - Hormuz flow history
+### Figure 14 - Hormuz flow history
 
-![Oil flow through the Strait of Hormuz from 2020 through first-half 2025](12_hormuz_flow_2020_1H25.png)
+![Oil flow through the Strait of Hormuz from 2020 through first-half 2025](14_hormuz_flow_2020_1H25.png)
 
-### Figure 13 - Hormuz share of global oil flows
+### Figure 15 - Hormuz share of global oil flows
 
-![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](13_hormuz_global_share_2020_1H25.png)
+![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](15_hormuz_global_share_2020_1H25.png)
