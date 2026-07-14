@@ -17,7 +17,7 @@ The report builds one evidence chain from the global energy system to financial-
 
 ## 1. Oil remains central to the global energy system
 
-<p align="center"><img src="Figures/01_global_energy_mix_2024.png" alt="Global energy mix in 2024" width="900"></p>
+![Global energy mix in 2024](Figures/01_global_energy_mix_2024.png)
 
 *Figure 1. Global energy supply by source. Source: Energy Institute, Statistical Review of World Energy 2025.*
 
@@ -27,19 +27,19 @@ Oil's global weight explains why disruption matters. The next question is whethe
 
 ## 2. Supply and demand are geographically separated
 
-<p align="center"><img src="Figures/02_top_oil_markets_2024.png" alt="Top oil producing and consuming countries in 2024" width="900"></p>
+![Top oil producing and consuming countries in 2024](Figures/02_top_oil_markets_2024.png)
 
 *Figure 2. Leading oil producers and consumers. Source: Energy Institute, Statistical Review of World Energy 2025.*
 
 The United States led both lists, but the rankings then diverged: Saudi Arabia and Russia were major suppliers, while China and India were large demand centres. The Top 10 countries represented 74.7% of production and 64.5% of consumption.
 
-<p align="center"><img src="Figures/03_regional_oil_balance_2024.png" alt="Regional oil production and consumption shares in 2024" width="900"></p>
+![Regional oil production and consumption shares in 2024](Figures/03_regional_oil_balance_2024.png)
 
 *Figure 3. Regional shares of world oil production and consumption. Source: Energy Institute, Statistical Review of World Energy 2025.*
 
 The regional view shows the direction of trade. The Middle East produced 31.3% of world oil but consumed 9.8%. Asia Pacific produced 7.5% but consumed 39.4%, while Europe also ran an 11.5 percentage-point deficit. Oil must therefore move at scale from supply centres to demand centres.
 
-<p align="center"><img src="Figures/04_oil_market_concentration_2024.png" alt="Oil market concentration in 2024" width="900"></p>
+![Oil market concentration in 2024](Figures/04_oil_market_concentration_2024.png)
 
 *Figure 4. Share of global oil production and consumption held by the largest countries. Source: Energy Institute, Statistical Review of World Energy 2025.*
 
@@ -49,7 +49,7 @@ The regional imbalance identifies the trade corridor, but end-market sensitivity
 
 ## 3. Large demand centres have different energy sensitivities
 
-<p align="center"><img src="Figures/07_selected_market_energy_mix_2024.png" alt="Energy mix of selected markets in 2024" width="900"></p>
+![Energy mix of selected markets in 2024](Figures/07_selected_market_energy_mix_2024.png)
 
 *Figure 5. Energy mix across selected economies and the European Union aggregate. Source: Energy Institute, Statistical Review of World Energy 2025.*
 
@@ -59,7 +59,7 @@ Energy mix alone does not show where imported crude comes from. The analysis nex
 
 ## 4. Import-origin exposure is concentrated in Asia
 
-<p align="center"><img src="Figures/08_hormuz_exporter_origin_share_2024.png" alt="Share of crude imports reported from Hormuz-region exporters in 2024" width="900"></p>
+![Share of crude imports reported from Hormuz-region exporters in 2024](Figures/08_hormuz_exporter_origin_share_2024.png)
 
 *Figure 6. Share of reported crude-import partner totals from selected Hormuz-region exporters. Source: UN Comtrade, HS 2709 imports, 2024.*
 
@@ -81,13 +81,13 @@ Country-level origin shares are therefore screening measures. Direct EIA flow da
 
 ## 5. Direct flow data confirm system-wide importance
 
-<p align="center"><img src="Figures/11_global_oil_chokepoints_2024.png" alt="Oil flows through major global maritime routes in 2024" width="900"></p>
+![Oil flows through major global maritime routes in 2024](Figures/11_global_oil_chokepoints_2024.png)
 
 *Figure 7. Oil flows through major maritime routes in 2024. Source: U.S. EIA, World Oil Transit Chokepoints, Table 1.*
 
 Hormuz was the second-largest route in the EIA comparison, carrying 20.7 mb/d, behind the Strait of Malacca at 22.5 mb/d. Its flow was far larger than the Suez and SUMED, Bab el-Mandeb, Panama Canal or Turkish Straits routes.
 
-<p align="center"><img src="Figures/13_hormuz_global_share_2020_1H25.png" alt="Strait of Hormuz share of global oil flows from 2020 through first-half 2025" width="900"></p>
+![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](Figures/13_hormuz_global_share_2020_1H25.png)
 
 *Figure 8. Hormuz flow as a share of world maritime oil trade and total oil supply. Source: U.S. EIA, World Oil Transit Chokepoints, Table 1.*
 
