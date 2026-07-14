@@ -8,4 +8,4 @@ clearly named folder.
 |---|---|---|
 | [Project 01: Hormuz Energy Risk](Project-01-Hormuz-Energy-Risk/) | Global oil-market structure and Strait of Hormuz exposure | pandas, matplotlib |
 
-More projects will be added as the portfolio develops.
+
