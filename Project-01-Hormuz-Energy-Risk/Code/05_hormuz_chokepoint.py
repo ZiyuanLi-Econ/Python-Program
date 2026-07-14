@@ -85,7 +85,7 @@ def plot_2024_chokepoints(chokepoints):
     ax.set_xlim(0, 26)
     ax.grid(axis="x", alpha=0.2)
     ax.spines[["top", "right", "left"]].set_visible(False)
-    save_chart(fig, "11_global_oil_chokepoints_2024.png")
+    save_chart(fig, "13_global_oil_chokepoints_2024.png")
 
 
 def plot_hormuz_flow(share_table):
@@ -105,7 +105,7 @@ def plot_hormuz_flow(share_table):
     ax.set_ylim(18, 23)
     ax.grid(axis="y", alpha=0.2)
     ax.spines[["top", "right"]].set_visible(False)
-    save_chart(fig, "12_hormuz_flow_2020_1H25.png")
+    save_chart(fig, "14_hormuz_flow_2020_1H25.png")
 
 
 def plot_global_shares(share_table):
@@ -157,7 +157,7 @@ def plot_global_shares(share_table):
     ax.grid(axis="y", alpha=0.2)
     ax.set_xlim(-0.1, len(share_table) - 0.3)
     ax.spines[["top", "right"]].set_visible(False)
-    save_chart(fig, "13_hormuz_global_share_2020_1H25.png")
+    save_chart(fig, "15_hormuz_global_share_2020_1H25.png")
 
 
 def main():
