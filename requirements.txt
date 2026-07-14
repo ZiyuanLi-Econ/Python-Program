@@ -1,3 +1,0 @@
-# Runtime: Python 3.12
-pandas>=2.2,<4.0
-matplotlib>=3.8,<4.0
