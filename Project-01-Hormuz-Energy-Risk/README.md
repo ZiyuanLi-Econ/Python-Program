@@ -1,127 +1,201 @@
-# Strait of Hormuz: Structural Oil-Market Exposure
+# Strait of Hormuz: Oil-Market Exposure and Financial Transmission
 
-*Energy Market Risk Note | 2024 data, with U.S. EIA flow data through 1H25*
+*Python energy-risk case study | 2024 cross-sectional data; EIA flow data through 1H25*
 
-Oil remained the largest source of global energy supply in 2024, but its production and consumption were located in very different regions. The Middle East supplied a large surplus while Asia Pacific ran the largest regional deficit, linking major demand centres to maritime routes. The Strait of Hormuz carried 20.7 million barrels per day (mb/d), equal to 26.0% of global maritime oil trade and 20.0% of total oil supply. This report traces that exposure from the energy system to financial markets.
+> Educational portfolio project. This is a structural exposure study, not an investment recommendation or an oil-price forecast.
 
-## Research frame
+## 1. Project task
 
-The report builds one evidence chain from the global energy system to financial-market transmission.
+The task is to assess whether the Strait of Hormuz is a material structural risk to the global oil market, identify the demand centres with the greatest exposure, and explain how a disruption could transmit into financial markets.
 
-| Question | 2024 evidence | Market interpretation |
+The project answers five questions with five Python scripts:
+
+| Question | Analysis | Main output |
+|---|---|---|
+| Q1. How important is oil in the global energy system? | Global energy mix | Figure 01 |
+| Q2. Where are oil production and consumption separated? | Country rankings, regional balance and concentration | Figures 02鈥?4 |
+| Q3. Which large markets are most oil-sensitive? | Total energy supply and energy mix | Figures 05鈥?7 |
+| Q4. Which selected importers have concentrated exporter origins? | Crude-import origin and domestic supply-gap screens | Figures 08鈥?0 |
+| Q5. How large and persistent are Hormuz flows? | Direct EIA chokepoint data | Figures 11鈥?3 |
+
+All 13 code-generated charts can also be viewed in the [figure gallery](Figures/README.md).
+
+## 2. Analytical workflow
+
+```mermaid
+flowchart TD
+    A["Q1 路 Global energy mix"] --> B["Q2 路 Oil production and consumption geography"]
+    B --> C["Q3 路 Selected-market energy sensitivity"]
+    C --> D["Q4 路 Import-origin and supply-gap screens"]
+    D --> E["Q5 路 Direct Hormuz flow data"]
+    E --> F["Financial transmission"]
+    F --> G["Conditional scenarios and monitoring"]
+```
+
+The logic moves from the global energy system to physical oil flows and only then to financial consequences. This avoids treating geopolitical headlines as a price forecast without first establishing the underlying exposure.
+
+## 3. Executive call
+
+> **Structural exposure is high; realised market impact is conditional.** The Strait of Hormuz carried 20.7 million barrels per day (mb/d) in 2024鈥?6.0% of world maritime oil trade and 20.0% of total oil supply. The project does not assume that a disruption will occur or that all of this volume would be lost. It shows that a persistent, concentrated transport dependency could create nonlinear repricing if transit risk rises and inventories, spare capacity or bypass routes cannot absorb the shock.
+
+| Indicator | Code result | Financial interpretation |
 |---|---:|---|
-| Does oil still matter globally? | 33.6% of energy supply | An oil disruption remains macro-relevant |
-| Where is the largest regional imbalance? | Middle East +21.5 pp; Asia Pacific -32.0 pp | Long-distance trade is structurally necessary |
-| Which selected importers have concentrated origins? | Japan 94.5%; South Korea 71.9% | Exposure is uneven across markets |
-| Is Hormuz systemically important? | 20.7 mb/d; 26.0% of maritime trade | It is a global, not only regional, chokepoint |
+| Oil share of global energy supply | 33.6% | An oil shock remains macro-relevant |
+| Middle East production less consumption share | +21.3 pp | The region has a structural export surplus |
+| Asia-Pacific production less consumption share | -30.4 pp | Long-distance imports are structurally necessary |
+| Hormuz flow in 2024 | 20.7 mb/d | The route is systemically large |
+| Hormuz share of maritime oil trade | 26.0% | Roughly one barrel in four of seaborne oil trade |
+| Hormuz share of total oil supply | 20.0% | Exposure is global, not only regional |
+| Japan / South Korea selected-exporter origin share | 94.5% / 71.9% | Import-origin concentration is highest in the selected Asian sample |
 
-## 1. Oil remains central to the global energy system
+### Source and freshness
+
+| Dataset | Evidence used | Cut-off and limitation |
+|---|---|---|
+| Energy Institute, Statistical Review 2025 | Energy supply, oil production and oil consumption | 2024 snapshot; historical data may be revised |
+| UN Comtrade, HS 2709 | Crude-import exporter origins for seven reporters | 2024 downloaded snapshot; exporter origin is not vessel route |
+| U.S. EIA, World Oil Transit Chokepoints | Route flows and global oil-flow totals | Annual averages through 2024 and a first-half 2025 average |
+
+**Evidence posture:** suitable for a historical portfolio case study and structural exposure screen. The project does not include live oil prices, equity valuations, analyst estimates or current positioning, so it cannot determine what is priced into markets today.
+
+## 4. Evidence chain
+
+### 4.1 Oil remains macro-relevant
 
 ![Global energy mix in 2024](Figures/01_global_energy_mix_2024.png)
 
-*Figure 1. Global energy supply by source. Source: Energy Institute, Statistical Review of World Energy 2025.*
+*Figure 01. Global energy supply by source. Source: Energy Institute, Statistical Review of World Energy 2025.*
 
-Global energy supply totalled 592.2 exajoules (EJ). Oil was the largest single source at 33.6%, followed by coal at 27.9% and natural gas at 25.1%. Together, the three fossil sources accounted for 86.6% of global energy supply, leaving the global economy sensitive to oil-market disruption.
+**Observation.** World energy supply was 592.2 exajoules (EJ) in 2024. Oil was the largest source at 33.6%, followed by coal at 27.9% and natural gas at 25.1%. Fossil fuels together represented 86.6%.
 
-Oil's global weight explains why disruption matters. The next question is whether the main sources of supply and demand are located in the same places.
+**Financial interpretation.** Oil remains large enough for a supply shock to affect input costs, inflation expectations, trade balances and sector earnings.
 
-## 2. Supply and demand are geographically separated
+**Caveat.** Energy share alone does not measure short-run price elasticity or the size of any future disruption.
 
-![Top oil producing and consuming countries in 2024](Figures/02_top_oil_markets_2024.png)
-
-*Figure 2. Leading oil producers and consumers. Source: Energy Institute, Statistical Review of World Energy 2025.*
-
-The United States led both lists, but the rankings then diverged: Saudi Arabia and Russia were major suppliers, while China and India were large demand centres. The Top 10 countries represented 74.7% of production and 64.5% of consumption.
+### 4.2 Supply and demand require long-distance trade
 
 ![Regional oil production and consumption shares in 2024](Figures/03_regional_oil_balance_2024.png)
 
-*Figure 3. Regional shares of world oil production and consumption. Source: Energy Institute, Statistical Review of World Energy 2025.*
+*Figure 03. Regional shares use the Energy Institute's published regional totals and Total World denominators.*
 
-The regional view shows the direction of trade. The Middle East produced 31.3% of world oil but consumed 9.8%. Asia Pacific produced 7.5% but consumed 39.4%, while Europe also ran an 11.5 percentage-point deficit. Oil must therefore move at scale from supply centres to demand centres.
+**Observation.** The Middle East produced 31.1% of world oil and consumed 9.8%, a 21.3 percentage-point surplus. Asia Pacific produced 7.5% and consumed 37.9%, a 30.4 percentage-point deficit. Europe also showed a 10.8-point deficit.
 
-![Oil market concentration in 2024](Figures/04_oil_market_concentration_2024.png)
+**Financial interpretation.** The largest consumption centres cannot be analysed independently of maritime logistics. Freight, insurance, inventories and alternative sourcing are part of the delivered crude cost.
 
-*Figure 4. Share of global oil production and consumption held by the largest countries. Source: Energy Institute, Statistical Review of World Energy 2025.*
+**Caveat.** Regional surplus and deficit show the direction of structural trade; they do not identify individual cargo routes.
 
-Supply concentration exceeds demand concentration at each displayed threshold. This increases the global relevance of disruptions affecting a major producing region or transport corridor.
-
-The regional imbalance identifies the trade corridor, but end-market sensitivity also depends on the importance of oil within each economy.
-
-## 3. Large demand centres have different energy sensitivities
+### 4.3 Importer sensitivity is uneven
 
 ![Energy mix of selected markets in 2024](Figures/07_selected_market_energy_mix_2024.png)
 
-*Figure 5. Energy mix across selected economies and the European Union aggregate. Source: Energy Institute, Statistical Review of World Energy 2025.*
+*Figure 07. Energy supply mix for selected economies and the European Union regional aggregate.*
 
-Oil represented roughly 39% to 42% of energy supply in Japan, South Korea, Germany, the European Union aggregate and the United States. China and India were more coal-intensive, but still consumed about 16.4 and 5.6 mb/d respectively. Energy mix and absolute market size must therefore be read together.
+Oil supplied about 39%鈥?2% of energy in Japan, South Korea, Germany, the European Union aggregate and the United States. China and India were more coal-intensive, but their total energy systems were much larger. Exposure therefore depends on both oil share and absolute demand.
 
-Energy mix alone does not show where imported crude comes from. The analysis next turns to the concentration of reported exporter origins.
+![Share of crude imports reported from selected Hormuz-region exporters in 2024](Figures/08_hormuz_exporter_origin_share_2024.png)
 
-## 4. Import-origin exposure is concentrated in Asia
+*Figure 08. Selected-exporter share of reported crude-import partner totals. Source: UN Comtrade, HS 2709, 2024.*
 
-![Share of crude imports reported from Hormuz-region exporters in 2024](Figures/08_hormuz_exporter_origin_share_2024.png)
+Japan and South Korea had the highest selected-exporter origin shares at 94.5% and 71.9%. India and China followed at 45.4% and 36.9%. The European Union, United States and Germany were lower in this sample.
 
-*Figure 6. Share of reported crude-import partner totals from selected Hormuz-region exporters. Source: UN Comtrade, HS 2709 imports, 2024.*
+**Critical distinction.** Exporter origin is a screening proxy. It does not prove that a cargo physically passed through Hormuz, and some exporters have alternative routes. The domestic supply-gap measure in Figure 10 is also a proxy鈥攏ot observed gross import dependence.
 
-Japan and South Korea had the highest shares from the selected exporter group. India and China were also material, while the European Union, United States and Germany were lower in this sample.
-
-| Market | Oil share of energy supply | Hormuz-region exporter-origin share | Domestic supply-gap proxy |
-|---|---:|---:|---:|
-| Japan | 39.1% | 94.5% | N/A |
-| South Korea | 42.2% | 71.9% | N/A |
-| India | 28.1% | 45.4% | 86.9% |
-| China | 20.3% | 36.9% | 74.0% |
-| European Union | 42.0% | 13.7% | 96.9% |
-| United States | 39.0% | 8.1% | 0.0% |
-| Germany | 41.8% | 7.7% | N/A |
-
-These measures must remain separate. Exporter origin does not prove physical transit through Hormuz: trade records do not identify the vessel route, and some exporters have bypass options. The supply-gap proxy is a positive production shortfall divided by consumption, not observed gross import dependence. Missing production for Japan, South Korea and Germany remains N/A rather than zero.
-
-Country-level origin shares are therefore screening measures. Direct EIA flow data provide the stronger evidence for the chokepoint's system-wide scale.
-
-## 5. Direct flow data confirm system-wide importance
+### 4.4 Direct flow data confirm systemic importance
 
 ![Oil flows through major global maritime routes in 2024](Figures/11_global_oil_chokepoints_2024.png)
 
-*Figure 7. Oil flows through major maritime routes in 2024. Source: U.S. EIA, World Oil Transit Chokepoints, Table 1.*
+*Figure 11. Average oil flow through major maritime routes in 2024. Source: U.S. EIA.*
 
-Hormuz was the second-largest route in the EIA comparison, carrying 20.7 mb/d, behind the Strait of Malacca at 22.5 mb/d. Its flow was far larger than the Suez and SUMED, Bab el-Mandeb, Panama Canal or Turkish Straits routes.
+Hormuz was the second-largest route in the EIA comparison at 20.7 mb/d, close to Malacca at 22.5 mb/d and far above the other individual routes shown.
 
 ![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](Figures/13_hormuz_global_share_2020_1H25.png)
 
-*Figure 8. Hormuz flow as a share of world maritime oil trade and total oil supply. Source: U.S. EIA, World Oil Transit Chokepoints, Table 1.*
+*Figure 13. Hormuz share of maritime oil trade and total oil supply. `1H25` is a first-half average.*
 
-Hormuz handled 19.2-21.9 mb/d during 2020-2024 and 20.9 mb/d in 1H25. Its share remained within 25.9%-27.9% of maritime oil trade and 20.0%-21.8% of total supply. Its importance is persistent rather than the result of one exceptional year.
+Hormuz flow stayed between 19.2 and 21.9 mb/d during 2020鈥?024 and averaged 20.9 mb/d in 1H25. Its share ranged from 25.9% to 27.9% of maritime oil trade and from 20.0% to 21.8% of total supply. The exposure is persistent, not a one-year anomaly.
 
-These ratios establish the scale of the corridor. They do not show how much supply would be lost in a disruption, because the realised effect would depend on duration, inventories, spare capacity, bypass routes and policy responses.
+## 5. Financial transmission
 
-## 6. Financial-market transmission
+The analysis supports a transmission map, not a point forecast.
 
-The data support a structural risk map, not a point forecast for oil prices.
+| Shock channel | First variable affected | Earnings or valuation channel | What to monitor |
+|---|---|---|---|
+| Transit-risk premium | Prompt crude prices and time spreads | Revenue sensitivity for producers; input-cost pressure for users | Brent, Dubai/Oman and front-month spreads |
+| Freight and insurance | Delivered crude cost | Refining margins, working capital and inventory carrying cost | VLCC freight and war-risk premiums |
+| Physical flow constraint | Available barrels and inventory draw | Importer inflation, current-account and FX pressure | Commercial/strategic stocks and Asian FX |
+| Supply response | Spare capacity and bypass utilisation | Determines realised volume loss and duration | Producer capacity and alternative-route flows |
+| Demand response | Consumption and substitution | Limits or extends margin and inflation effects | Product demand, refinery runs and economic activity |
 
-| Transmission channel | Evidence from this report | Financial variables to monitor |
+### Public-equity exposure screen
+
+No company-level valuation work is included, so the rows below are sector research candidates rather than security recommendations.
+
+| Exposure candidate | Direction under a sustained constraint | First financial line affected | Important offset |
+|---|---|---|---|
+| Producers outside the constrained corridor | Potential beneficiary | Realised price, revenue and free cash flow | Demand destruction and policy response |
+| Gulf producers dependent on the route | Mixed | Export volume and realised price | Higher benchmark prices may be offset by constrained volumes |
+| Asian refiners | Higher risk | Feedstock cost, freight, margin and working capital | Product cracks and inventory protection may partly offset |
+| Airlines, chemicals and energy-intensive industry | Negative cost sensitivity | Fuel/feedstock cost and operating margin | Hedging and pass-through capacity |
+| Tanker shipping | Mixed, high dispersion | Freight revenue, utilisation and insurance cost | Rerouting can raise tonne-miles while disruption reduces availability |
+| Import-heavy Asian markets | Macro and multiple risk | Inflation, current account, FX and domestic demand | Inventories, subsidies and policy support |
+
+### What is priced in versus what requires proof
+
+- **Not tested here:** current oil-curve pricing, equity performance, estimate revisions, valuation multiples, crowding and hedging activity.
+- **Requires proof:** an observable fall in physical flow, persistent freight/insurance repricing, inventory draws, reduced spare capacity or constrained bypass utilisation.
+- **Research posture:** `watchlist / wait for proof`. Live market and issuer data are required before moving from structural exposure to a security-level view.
+
+## 6. Conditional scenario framework
+
+These pathways are illustrative. They have no assigned probability and no oil-price target.
+
+| Scenario | Condition | Expected first signal | Likely financial transmission | Confirm / invalidate |
+|---|---|---|---|---|
+| Continued transit | Flow remains near the recent 20鈥?2 mb/d range | Risk premium fades or stays limited | Fundamentals dominate; little persistent earnings impact | Stable flow, freight, insurance and inventories |
+| Logistics friction | Transit continues but delays, freight or insurance rise | Freight and prompt spreads react first | Delivered crude costs and working capital rise; importer margins face moderate pressure | Persistent freight/insurance move; invalidated by rapid normalisation |
+| Sustained physical constraint | Flow falls materially and buffers are insufficient | Crude backwardation, volatility and inventory draw | Upstream/downstream earnings dispersion; importer inflation and FX pressure | Lower measured flow plus inventory draw; invalidated by bypass, spare capacity or demand response |
+
+## 7. Strongest counterargument
+
+The headline flow of 20.7 mb/d is not the same as barrels permanently lost. Strategic inventories, commercial stocks, spare production capacity, bypass pipelines, rerouting, demand response and policy intervention can reduce the realised shock. This counterargument is strong and is why the report concludes **high structural exposure**, not a certain disruption or a predetermined price outcome.
+
+## 8. Monitoring dashboard
+
+The next research update should track:
+
+1. Hormuz flow in mb/d;
+2. Brent and Dubai/Oman prices and prompt time spreads;
+3. VLCC freight and war-risk insurance;
+4. commercial and strategic petroleum inventories;
+5. available spare production capacity;
+6. alternative-route utilisation;
+7. refinery runs and product cracks;
+8. inflation, current accounts and exchange rates in major Asian importing markets.
+
+## 9. Method, limitations and reproduction
+
+### Method map
+
+| Script | Purpose | Figures |
 |---|---|---|
-| Crude pricing | Hormuz carried 20.0% of total oil supply in 2024 | Brent and Dubai/Oman prices, crude differentials and time spreads |
-| Freight and insurance | Middle Eastern supply is structurally linked to Asian demand | VLCC freight rates and war-risk insurance premiums |
-| Asian refining | Japan, South Korea, India and China show material exporter-origin shares | Refining margins, feedstock differentials and commercial inventories |
-| Importer macro risk | Asia Pacific has the largest regional consumption deficit | Import bills, inflation expectations, current accounts and exchange rates |
-| Equity dispersion | Producers and energy users face different earnings sensitivities | Upstream producers, refiners, airlines, chemicals and shipping companies |
+| [`01_global_energy.py`](Code/01_global_energy.py) | Calculate the 2024 global energy mix | 01 |
+| [`02_oil_geography.py`](Code/02_oil_geography.py) | Rank oil markets and calculate regional/world concentration | 02鈥?4 |
+| [`03_market_energy_mix.py`](Code/03_market_energy_mix.py) | Compare total energy supply and source mix | 05鈥?7 |
+| [`04_import_exposure.py`](Code/04_import_exposure.py) | Build exporter-origin and domestic supply-gap screens | 08鈥?0 |
+| [`05_hormuz_chokepoint.py`](Code/05_hormuz_chokepoint.py) | Analyse EIA chokepoint flows | 11鈥?3 |
 
-## Conclusion
+### Main limitations
 
-Hormuz exposure follows a clear chain: oil remains central; Middle Eastern supply and Asian demand are separated; several large importers rely heavily on crude from Hormuz-region exporters; and the Strait consistently carries about one quarter of maritime oil trade. The analysis identifies where sensitivity may be concentrated, but it does not estimate the price impact or duration of a disruption.
-
-## Method and limitations
-
-- Most cross-market results are a 2024 snapshot rather than a forecast.
+- The Energy Institute and UN Comtrade analysis is a 2024 snapshot.
 - The European Union is a regional aggregate, not an additional country.
-- UN Comtrade exporter origin is not the physical shipping route. Net weight is used where available, with reported trade value used when partner weight is unavailable.
-- The supply-gap proxy is not gross import dependence and excludes product trade, inventories, exports and refinery effects.
-- The EIA series uses annual averages for 2020-2024. `1H25` is a first-half average, not a full-year observation.
-- No scenario is imposed for disruption length, bypass capacity, inventory release, demand response or policy intervention.
-- The report does not provide an oil-price target or investment recommendation.
+- Exporter origin does not establish the physical shipping route.
+- The supply-gap proxy excludes product trade, inventories, exports and refinery effects.
+- Missing production remains `N/A`; it is not treated as zero.
+- `1H25` is a half-year average, not a full-year observation.
+- EIA route flow is average physical throughput, not an estimate of barrels lost in a disruption.
+- No disruption probability, duration, price elasticity, company earnings model or valuation is estimated.
 
-## Reproduce the analysis
+### Run the analysis
 
 From the project folder:
 
@@ -131,20 +205,56 @@ python -m pip install -r Code/requirements.txt
 python Code/run_all.py
 ```
 
-The Energy Institute and UN Comtrade source files are not redistributed in this repository.
+The Energy Institute and UN Comtrade source files are not redistributed in this repository. See [`Code/DATA_NOTES.md`](Code/DATA_NOTES.md) for the required downloads and query scope.
+
+## 10. Additional analytical outputs
+
+The six figures above form the main evidence chain. The remaining seven code outputs are preserved below so the complete Q1鈥換5 analysis is visible rather than hidden or deleted.
+
+<details open>
+<summary><strong>Open / close the additional figures</strong></summary>
+
+### Largest producing and consuming countries
+
+![Top oil producing and consuming countries in 2024](Figures/02_top_oil_markets_2024.png)
+
+### Oil-market concentration
+
+![Oil market concentration in 2024](Figures/04_oil_market_concentration_2024.png)
+
+### Total energy supply in selected markets
+
+![Total energy supply in selected markets in 2024](Figures/05_selected_market_total_energy_2024.png)
+
+### Energy supply by source and market
+
+![Energy supply by source and market in 2024](Figures/06_selected_market_energy_amount_2024.png)
+
+### Crude-import exporter mix
+
+![Exporter mix of reported crude imports in 2024](Figures/09_hormuz_exporter_mix_2024.png)
+
+### Domestic oil supply-gap proxy
+
+![Domestic oil supply gap proxy in 2024](Figures/10_domestic_supply_gap_proxy_2024.png)
+
+### Hormuz flow history
+
+![Oil flow through the Strait of Hormuz from 2020 through first-half 2025](Figures/12_hormuz_flow_2020_1H25.png)
+
+</details>
 
 ## Sources
 
-- [Energy Institute - Statistical Review of World Energy](https://www.energyinst.org/statistical-review/resources-and-data-downloads)
-- [UN Comtrade - International Trade Data](https://comtradeplus.un.org/TradeFlow)
-- [U.S. EIA - World Oil Transit Chokepoints](https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/)
-- Detailed download and scope notes: [`Code/DATA_NOTES.md`](Code/DATA_NOTES.md)
+- [Energy Institute 鈥?Statistical Review of World Energy](https://www.energyinst.org/statistical-review/resources-and-data-downloads)
+- [UN Comtrade 鈥?International Trade Data](https://comtradeplus.un.org/TradeFlow)
+- [U.S. EIA 鈥?World Oil Transit Chokepoints](https://www.eia.gov/international/content/analysis/special_topics/World_Oil_Transit_Chokepoints/)
 
-## Project structure
+## Repository structure
 
 ```text
 Project-01-Hormuz-Energy-Risk/
-|-- README.md          # Energy-market risk report
+|-- README.md          # Task, workflow and financial-risk report
 |-- Code/              # Five analysis scripts, runner and data notes
-`-- Figures/           # Report figures generated by the scripts
+`-- Figures/           # Thirteen PNG outputs and the GitHub figure gallery
 ```

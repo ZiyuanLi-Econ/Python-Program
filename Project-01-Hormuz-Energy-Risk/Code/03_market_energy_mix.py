@@ -80,9 +80,9 @@ def plot_energy_amounts(amounts, totals):
     for position, total in enumerate(totals):
         ax.text(position, total + totals.max() * 0.012, f"{total:.1f}", ha="center", fontsize=8)
     ax.set_ylim(0, totals.max() * 1.13)
-    ax.set_title(f"Energy Consumption by Source and Market, {YEAR}", fontweight="bold")
+    ax.set_title(f"Energy Supply by Source and Market, {YEAR}", fontweight="bold")
     ax.set_xlabel("")
-    ax.set_ylabel("Energy consumption (EJ)")
+    ax.set_ylabel("Energy supply (EJ)")
     ax.tick_params(axis="x", rotation=22)
     for label in ax.get_xticklabels():
         label.set_ha("right")
@@ -132,7 +132,7 @@ def main():
         "Largest source share (%)": shares.max(axis=1),
         "Oil share (%)": shares["Oil"],
     })
-    print(f"Energy consumption by source in {YEAR} (EJ):")
+    print(f"Energy supply by source in {YEAR} (EJ):")
     print(amounts.round(1).to_string())
     print(f"\nEnergy mix in {YEAR} (%):")
     print(shares.round(1).to_string())
