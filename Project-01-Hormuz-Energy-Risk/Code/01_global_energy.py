@@ -18,7 +18,6 @@ ENERGY_NAMES = {
     "nuclear_ej": "Nuclear",
     "renewables_ej": "Renewables",
 }
-
 ENERGY_COLORS = {
     "Oil": "#C65D3A",
     "Coal": "#555555",
@@ -27,86 +26,76 @@ ENERGY_COLORS = {
     "Renewables": "#3A8F5B",
 }
 
+# 1. Read and select the world data for 2024
+data = pd.read_csv(DATA_FILE)
+world = data[(data["Country"] == "Total World") & (data["Year"] == YEAR)]
+total_energy = world.loc[world["Var"] == "tes_ej", "Value"].iloc[0]
 
-def main():
-    data = pd.read_csv(DATA_FILE)
+# 2. Build the energy-mix table
+energy_mix = world[world["Var"].isin(ENERGY_NAMES)][["Var", "Value"]].copy()
+energy_mix["Energy source"] = energy_mix["Var"].map(ENERGY_NAMES)
+energy_mix["Energy supply (EJ)"] = energy_mix["Value"]
+energy_mix["Share (%)"] = energy_mix["Value"] / total_energy * 100
+energy_mix = energy_mix[
+    ["Energy source", "Energy supply (EJ)", "Share (%)"]
+].sort_values("Share (%)", ascending=False).reset_index(drop=True)
 
-    # Select the world total and calculate each source's share of energy supply.
-    world = data[(data["Country"] == "Total World") & (data["Year"] == YEAR)]
-    total_energy = world.loc[world["Var"] == "tes_ej", "Value"].iloc[0]
+fossil_share = energy_mix.loc[
+    energy_mix["Energy source"].isin(["Oil", "Coal", "Natural gas"]), "Share (%)"
+].sum()
 
-    energy_mix = world[world["Var"].isin(ENERGY_NAMES)][["Var", "Value"]].copy()
-    energy_mix["Energy source"] = energy_mix["Var"].map(ENERGY_NAMES)
-    energy_mix["Energy supply (EJ)"] = energy_mix["Value"]
-    energy_mix["Share (%)"] = energy_mix["Value"] / total_energy * 100
-    energy_mix = energy_mix[["Energy source", "Energy supply (EJ)", "Share (%)"]]
-    energy_mix = energy_mix.sort_values("Share (%)", ascending=False).reset_index(drop=True)
+print(f"Global total energy supply in {YEAR}: {total_energy:.1f} EJ")
+print(f"Fossil-fuel share: {fossil_share:.1f}%")
+print("\nGlobal energy mix:")
+print(energy_mix.round(1).to_string(index=False))
 
-    fossil_share = energy_mix.loc[
-        energy_mix["Energy source"].isin(["Oil", "Coal", "Natural gas"]),
-        "Share (%)",
-    ].sum()
+# 3. Create the same figure as the current project
+FIGURE_FILE.parent.mkdir(parents=True, exist_ok=True)
+colors = [ENERGY_COLORS[name] for name in energy_mix["Energy source"]]
+bar_data = energy_mix.sort_values("Share (%)")
+bar_colors = [ENERGY_COLORS[name] for name in bar_data["Energy source"]]
 
-    print(f"Global total energy supply in {YEAR}: {total_energy:.1f} EJ")
-    print(f"Fossil-fuel share: {fossil_share:.1f}%")
-    print("\nGlobal energy mix:")
-    print(energy_mix.round(1).to_string(index=False))
+fig, (ax_bar, ax_donut) = plt.subplots(
+    1, 2, figsize=(12, 5.8), gridspec_kw={"width_ratios": [1.15, 1]}
+)
 
-    # A bar chart is precise, while the donut gives a quick view of composition.
-    FIGURE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    colors = [ENERGY_COLORS[name] for name in energy_mix["Energy source"]]
-    bar_data = energy_mix.sort_values("Share (%)")
-    bar_colors = [ENERGY_COLORS[name] for name in bar_data["Energy source"]]
+bars = ax_bar.barh(bar_data["Energy source"], bar_data["Share (%)"], color=bar_colors)
+ax_bar.bar_label(
+    bars,
+    labels=[f"{value:.1f}%" for value in bar_data["Share (%)"]],
+    padding=4,
+    fontsize=10,
+)
+ax_bar.set_title("Share by energy source")
+ax_bar.set_xlabel("Share of total energy supply (%)")
+ax_bar.set_ylabel("")
+ax_bar.set_xlim(0, energy_mix["Share (%)"].max() * 1.22)
+ax_bar.grid(axis="x", alpha=0.2)
+ax_bar.spines[["top", "right", "left"]].set_visible(False)
 
-    fig, (ax_bar, ax_donut) = plt.subplots(
-        1,
-        2,
-        figsize=(12, 5.8),
-        gridspec_kw={"width_ratios": [1.15, 1]},
-    )
+ax_donut.pie(
+    energy_mix["Share (%)"],
+    labels=energy_mix["Energy source"],
+    colors=colors,
+    autopct="%1.1f%%",
+    startangle=90,
+    counterclock=False,
+    pctdistance=0.78,
+    wedgeprops={"width": 0.42, "edgecolor": "white"},
+)
+ax_donut.set_title("Composition of global supply")
 
-    bars = ax_bar.barh(
-        bar_data["Energy source"], bar_data["Share (%)"], color=bar_colors
-    )
-    ax_bar.bar_label(
-        bars,
-        labels=[f"{value:.1f}%" for value in bar_data["Share (%)"]],
-        padding=4,
-        fontsize=10,
-    )
-    ax_bar.set_title("Share by energy source")
-    ax_bar.set_xlabel("Share of total energy supply (%)")
-    ax_bar.set_ylabel("")
-    ax_bar.set_xlim(0, energy_mix["Share (%)"].max() * 1.22)
-    ax_bar.grid(axis="x", alpha=0.2)
-    ax_bar.spines[["top", "right", "left"]].set_visible(False)
+fig.suptitle(f"Global Energy Mix, {YEAR}", fontsize=16, fontweight="bold")
+fig.text(
+    0.5,
+    0.015,
+    "Source: Energy Institute, Statistical Review of World Energy 2025.",
+    ha="center",
+    fontsize=9,
+    color="#555555",
+)
+fig.tight_layout(rect=[0.02, 0.06, 0.98, 0.92])
+fig.savefig(FIGURE_FILE, dpi=220, bbox_inches="tight", facecolor="white")
+plt.close(fig)
 
-    ax_donut.pie(
-        energy_mix["Share (%)"],
-        labels=energy_mix["Energy source"],
-        colors=colors,
-        autopct="%1.1f%%",
-        startangle=90,
-        counterclock=False,
-        pctdistance=0.78,
-        wedgeprops={"width": 0.42, "edgecolor": "white"},
-    )
-    ax_donut.set_title("Composition of global supply")
-
-    fig.suptitle(f"Global Energy Mix, {YEAR}", fontsize=16, fontweight="bold")
-    fig.text(
-        0.5,
-        0.015,
-        "Source: Energy Institute, Statistical Review of World Energy 2025.",
-        ha="center",
-        fontsize=9,
-        color="#555555",
-    )
-    fig.tight_layout(rect=[0.02, 0.06, 0.98, 0.92])
-    fig.savefig(FIGURE_FILE, dpi=220, bbox_inches="tight", facecolor="white")
-    plt.close(fig)
-    print(f"\nFigure saved to: {FIGURE_FILE}")
-
-
-if __name__ == "__main__":
-    main()
+print(f"\nFigure saved to: {FIGURE_FILE}")
