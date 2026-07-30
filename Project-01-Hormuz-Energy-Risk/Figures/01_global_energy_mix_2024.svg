@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620">
+<rect width="100%" height="100%" fill="white"/>
+<style>text{font-family:Arial,Helvetica,sans-serif;fill:#111}.title{font-size:28px;font-weight:700}.panel{font-size:20px}.axis{font-size:15px}.label{font-size:16px}.small{font-size:13px;fill:#555}.grid{stroke:#bbb;stroke-opacity:.25;stroke-width:1}</style>
+<text x="600" y="42" text-anchor="middle" class="title">Global Energy Mix, 2024</text>
+<text x="315" y="112" text-anchor="middle" class="panel">Energy supply by source</text>
+<text x="925" y="112" text-anchor="middle" class="panel">Composition of global supply</text>
+<line x1="105.0" y1="140" x2="105.0" y2="505" class="grid"/>
+<text x="105.0" y="530" text-anchor="middle" class="axis">0</text>
+<line x1="214.1" y1="140" x2="214.1" y2="505" class="grid"/>
+<text x="214.1" y="530" text-anchor="middle" class="axis">50</text>
+<line x1="323.2" y1="140" x2="323.2" y2="505" class="grid"/>
+<text x="323.2" y="530" text-anchor="middle" class="axis">100</text>
+<line x1="432.3" y1="140" x2="432.3" y2="505" class="grid"/>
+<text x="432.3" y="530" text-anchor="middle" class="axis">150</text>
+<line x1="541.4" y1="140" x2="541.4" y2="505" class="grid"/>
+<text x="541.4" y="530" text-anchor="middle" class="axis">200</text>
+<line x1="105" y1="505" x2="585" y2="505" stroke="#222"/>
+<text x="92" y="186" text-anchor="end" class="label">Oil</text>
+<rect x="105" y="155" width="434.2" height="50" fill="#C65D3A"/>
+<text x="547.2" y="186" class="label">199.0 EJ</text>
+<text x="92" y="254" text-anchor="end" class="label">Coal</text>
+<rect x="105" y="223" width="360.4" height="50" fill="#555555"/>
+<text x="473.4" y="254" class="label">165.2 EJ</text>
+<text x="92" y="322" text-anchor="end" class="label">Natural gas</text>
+<rect x="105" y="291" width="324.2" height="50" fill="#2962A3"/>
+<text x="437.2" y="322" class="label">148.6 EJ</text>
+<text x="92" y="390" text-anchor="end" class="label">Renewables</text>
+<rect x="105" y="359" width="106.0" height="50" fill="#3A8F5B"/>
+<text x="219.0" y="390" class="label">48.6 EJ</text>
+<text x="92" y="458" text-anchor="end" class="label">Nuclear</text>
+<rect x="105" y="427" width="67.2" height="50" fill="#8064A2"/>
+<text x="180.2" y="458" class="label">30.8 EJ</text>
+<text x="345" y="565" text-anchor="middle" class="axis">Energy supply (EJ)</text>
+<path d="M 925.00,180.00 A 150,150 0 0,1 1053.63,407.17 L 997.89,373.73 A 85,85 0 0,0 925.00,245.00 Z" fill="#C65D3A" stroke="white" stroke-width="2"/>
+<text x="1027.2" y="277.1" text-anchor="middle" class="label">33.6%</text>
+<text x="1079.9" y="247.3" text-anchor="start" class="label">Oil</text>
+<path d="M 1053.63,407.17 A 150,150 0 0,1 825.80,442.52 L 868.79,393.76 A 85,85 0 0,0 997.89,373.73 Z" fill="#555555" stroke="white" stroke-width="2"/>
+<text x="943.0" y="451.1" text-anchor="middle" class="label">27.9%</text>
+<text x="952.3" y="510.9" text-anchor="start" class="label">Coal</text>
+<path d="M 825.80,442.52 A 150,150 0 0,1 813.11,230.10 L 861.60,273.39 A 85,85 0 0,0 868.79,393.76 Z" fill="#2962A3" stroke="white" stroke-width="2"/>
+<text x="807.7" y="342.0" text-anchor="middle" class="label">25.1%</text>
+<text x="747.3" y="345.6" text-anchor="end" class="label">Natural gas</text>
+<path d="M 813.11,230.10 A 150,150 0 0,1 876.86,187.94 L 897.72,249.50 A 85,85 0 0,0 861.60,273.39 Z" fill="#3A8F5B" stroke="white" stroke-width="2"/>
+<text x="860.2" y="237.0" text-anchor="middle" class="label">8.2%</text>
+<text x="826.8" y="186.5" text-anchor="end" class="label">Renewables</text>
+<path d="M 876.86,187.94 A 150,150 0 0,1 925.00,180.00 L 925.00,245.00 A 85,85 0 0,0 897.72,249.50 Z" fill="#8064A2" stroke="white" stroke-width="2"/>
+<text x="905.9" y="219.1" text-anchor="middle" class="label">5.2%</text>
+<text x="896.1" y="159.4" text-anchor="end" class="label">Nuclear</text>
+<text x="600" y="604" text-anchor="middle" class="small">Source: Energy Institute, Statistical Review of World Energy 2025.</text>
+</svg>
