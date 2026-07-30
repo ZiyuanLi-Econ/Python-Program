@@ -35,7 +35,7 @@ Each step below answers the question left open by the previous one. The purpose 
 
 ### 3.1 Start with oil's role in the global energy system
 
-![Global energy mix in 2024](Figures/01_global_energy_mix_2024.png)
+![Global energy mix in 2024](Figures/01_global_energy_mix_2024.svg)
 
 Global energy supply totalled 592.2 exajoules in 2024. Oil was the largest source at 33.6%, ahead of coal at 27.9% and natural gas at 25.1%; the three fossil sources together accounted for 86.6%. The point is not that every oil disruption must create a large economic shock. It is that oil remains large enough for a material transport constraint to potentially affect delivered energy costs, trade balances and inflation-sensitive sectors.
 
@@ -67,7 +67,7 @@ The 2024 comparison establishes scale, but a single year could still be exceptio
 
 ### 3.5 Hormuz is a persistent part of the global oil system
 
-![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](Figures/15_hormuz_global_share_2020_1H25.png)
+![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](Figures/15_hormuz_global_share_2020_1H25.svg)
 
 Hormuz flow remained between 19.2 and 21.9 mb/d from 2020 through 1H25. Across the same period, its share stayed within 25.9%-27.9% of world maritime oil trade and 20.0%-21.8% of total oil supply. The 2024 readings of 20.7 mb/d, 26.0% and 20.0% were therefore close to the middle of the displayed ranges rather than an exceptional peak.
 
@@ -142,7 +142,7 @@ python -m pip install -r Code/requirements.txt
 python Code/run_all.py
 ```
 
-`run_all.py` executes the five scripts and regenerates all 15 current PNG outputs. The workflow was last validated with Python 3.14.3, pandas 3.0.1 and matplotlib 3.10.8.
+`run_all.py` executes the five scripts and regenerates all 15 current figure outputs. The workflow was last validated with Python 3.14.3, pandas 3.0.1 and matplotlib 3.10.8.
 
 - [Source-file names, query scope and snapshot hashes](Code/DATA_NOTES.md)
 - [Complete 15-figure gallery](Figures/README.md)
