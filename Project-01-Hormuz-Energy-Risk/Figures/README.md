@@ -1,6 +1,6 @@
 # Figure gallery
 
-GitHub displays image folders as a file list rather than as Windows-style thumbnails. This page renders every PNG directly while keeping the `Figures/` directory flat and simple.
+GitHub displays image folders as a file list rather than as Windows-style thumbnails. This page renders every figure directly while keeping the `Figures/` directory flat and simple.
 
 [Back to the financial report](../README.md)
 
@@ -8,7 +8,7 @@ GitHub displays image folders as a file list rather than as Windows-style thumbn
 
 ### Figure 01 - Global energy mix
 
-![Global energy mix in 2024](01_global_energy_mix_2024.png)
+![Global energy mix in 2024](01_global_energy_mix_2024.svg)
 
 ## Q2 - Oil production, consumption and concentration
 
@@ -72,4 +72,4 @@ GitHub displays image folders as a file list rather than as Windows-style thumbn
 
 ### Figure 15 - Hormuz share of global oil flows
 
-![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](15_hormuz_global_share_2020_1H25.png)
+![Strait of Hormuz share of global oil flows from 2020 through first-half 2025](15_hormuz_global_share_2020_1H25.svg)
