@@ -6,10 +6,12 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+plt.rcParams["svg.fonttype"] = "none"
+
 YEAR = 2024
 CODE_DIR = Path(__file__).resolve().parent
 DATA_FILE = CODE_DIR / "data_raw" / "Statistical Review of World Energy Narrow format.csv"
-FIGURE_FILE = CODE_DIR.parent / "Figures" / "01_global_energy_mix_2024.png"
+FIGURE_FILE = CODE_DIR.parent / "Figures" / "01_global_energy_mix_2024.svg"
 
 ENERGY_NAMES = {
     "oilcons_ej": "Oil",
@@ -49,27 +51,31 @@ print(f"Fossil-fuel share: {fossil_share:.1f}%")
 print("\nGlobal energy mix:")
 print(energy_mix.round(1).to_string(index=False))
 
-# 3. Create the same figure as the current project
+# 3. Create the updated figure
 FIGURE_FILE.parent.mkdir(parents=True, exist_ok=True)
 colors = [ENERGY_COLORS[name] for name in energy_mix["Energy source"]]
-bar_data = energy_mix.sort_values("Share (%)")
+bar_data = energy_mix.sort_values("Energy supply (EJ)")
 bar_colors = [ENERGY_COLORS[name] for name in bar_data["Energy source"]]
 
 fig, (ax_bar, ax_donut) = plt.subplots(
     1, 2, figsize=(12, 5.8), gridspec_kw={"width_ratios": [1.15, 1]}
 )
 
-bars = ax_bar.barh(bar_data["Energy source"], bar_data["Share (%)"], color=bar_colors)
+bars = ax_bar.barh(
+    bar_data["Energy source"],
+    bar_data["Energy supply (EJ)"],
+    color=bar_colors,
+)
 ax_bar.bar_label(
     bars,
-    labels=[f"{value:.1f}%" for value in bar_data["Share (%)"]],
+    labels=[f"{value:.1f} EJ" for value in bar_data["Energy supply (EJ)"]],
     padding=4,
     fontsize=10,
 )
-ax_bar.set_title("Share by energy source")
-ax_bar.set_xlabel("Share of total energy supply (%)")
+ax_bar.set_title("Energy supply by source")
+ax_bar.set_xlabel("Energy supply (EJ)")
 ax_bar.set_ylabel("")
-ax_bar.set_xlim(0, energy_mix["Share (%)"].max() * 1.22)
+ax_bar.set_xlim(0, energy_mix["Energy supply (EJ)"].max() * 1.22)
 ax_bar.grid(axis="x", alpha=0.2)
 ax_bar.spines[["top", "right", "left"]].set_visible(False)
 
@@ -95,7 +101,7 @@ fig.text(
     color="#555555",
 )
 fig.tight_layout(rect=[0.02, 0.06, 0.98, 0.92])
-fig.savefig(FIGURE_FILE, dpi=220, bbox_inches="tight", facecolor="white")
+fig.savefig(FIGURE_FILE, format="svg", bbox_inches="tight", facecolor="white")
 plt.close(fig)
 
 print(f"\nFigure saved to: {FIGURE_FILE}")
