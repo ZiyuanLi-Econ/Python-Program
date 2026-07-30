@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+plt.rcParams["svg.fonttype"] = "none"
+
 CODE_DIR = Path(__file__).resolve().parent
 FIGURES_DIR = CODE_DIR.parent / "Figures"
 PERIODS = ["2020", "2021", "2022", "2023", "2024", "1H25"]
@@ -121,11 +123,11 @@ save_chart(fig, "14_hormuz_flow_2020_1H25.png")
 # 5. Figure 15
 fig, ax = plt.subplots(figsize=(9.8, 5.4))
 series = [
-    ("Share of maritime trade (%)", "World maritime oil trade", "#2962A3"),
-    ("Share of total supply (%)", "World total oil supply", "#C65D3A"),
+    ("Share of maritime trade (%)", "World maritime oil trade", "#2962A3", 8),
+    ("Share of total supply (%)", "World total oil supply", "#C65D3A", -14),
 ]
 
-for column, label, color in series:
+for column, label, color, offset in series:
     ax.plot(
         share_table["Period"],
         share_table[column],
@@ -135,7 +137,6 @@ for column, label, color in series:
         color=color,
     )
     for period, value in zip(share_table["Period"], share_table[column]):
-        offset = 8 if "maritime" in column else -14
         ax.annotate(
             f"{value:.1f}%",
             (period, value),
@@ -145,27 +146,11 @@ for column, label, color in series:
             fontsize=8.5,
         )
 
-ax.annotate(
-    "Share of maritime trade",
-    (share_table.index[-1], share_table["Share of maritime trade (%)"].iloc[-1]),
-    xytext=(12, 9),
-    textcoords="offset points",
-    fontsize=8.5,
-    color="#2962A3",
-)
-ax.annotate(
-    "Share of total supply",
-    (share_table.index[-1], share_table["Share of total supply (%)"].iloc[-1]),
-    xytext=(12, -11),
-    textcoords="offset points",
-    fontsize=8.5,
-    color="#C65D3A",
-)
 ax.set_title("Strait of Hormuz share of global oil flows")
 ax.set_xlabel("")
 ax.set_ylabel("Share (%)")
 ax.set_ylim(17, 30)
 ax.grid(axis="y", alpha=0.2)
-ax.set_xlim(-0.1, len(share_table) - 0.3)
+ax.legend(frameon=False, loc="upper right")
 ax.spines[["top", "right"]].set_visible(False)
-save_chart(fig, "15_hormuz_global_share_2020_1H25.png")
+save_chart(fig, "15_hormuz_global_share_2020_1H25.svg")
