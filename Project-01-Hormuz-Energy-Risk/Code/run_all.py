@@ -19,7 +19,8 @@ SCRIPTS = [
 ]
 
 missing_data = [
-    filename for filename in REQUIRED_DATA if not (CODE_DIR / "data_raw" / filename).exists()
+    filename for filename in REQUIRED_DATA
+    if not (CODE_DIR / "data_raw" / filename).exists()
 ]
 if missing_data:
     missing_list = "\n".join(f"- {filename}" for filename in missing_data)
@@ -28,7 +29,6 @@ if missing_data:
         f"{missing_list}\n\n"
         "Download the files described in Code/DATA_NOTES.md, then run this command again."
     )
-
 
 for number, script in enumerate(SCRIPTS, start=1):
     print(f"\n[{number}/5] Running {script}...", flush=True)
