@@ -37,7 +37,7 @@ Each step below answers the question left open by the previous one. The purpose 
 
 ![Global energy mix in 2024](Figures/01_global_energy_mix_2024.svg)
 
-Global energy supply totalled 592.2 exajoules in 2024. Oil was the largest source at 33.6%, ahead of coal at 27.9% and natural gas at 25.1%; the three fossil sources together accounted for 86.6%. The point is not that every oil disruption must create a large economic shock. It is that oil remains large enough for a material transport constraint to potentially affect delivered energy costs, trade balances and inflation-sensitive sectors.
+Global energy supply totalled 592.2 exajoules in 2024. Oil was the largest source at approximately 199.0 EJ, equivalent to 33.6% of the total, ahead of coal at 165.2 EJ (27.9%) and natural gas at 148.6 EJ (25.1%); the three fossil sources together accounted for 86.6%. The point is not that every oil disruption must create a large economic shock. It is that oil remains large enough for a material transport constraint to potentially affect delivered energy costs, trade balances and inflation-sensitive sectors.
 
 This establishes why oil matters, but not where the system is vulnerable. The next question is whether the barrels are produced in the same places where they are consumed.
 
